@@ -1,0 +1,45 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <div class="cont">
+        <div class="regmaindiv">
+            <div class="mainfield">
+                <h2 class="hregister">Увiйти</h2>
+
+                {% if message %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                {% endif %}
+
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <div class="group">
+                        <input class="field" type="text" name="username">
+                        <label>Ник</label>
+                        <div class="divforline divforlineBorder">
+                            <div class="leftdiv"></div>
+                            <div class="middledivUsername"></div>
+                            <div class="otherdiv"></div>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <input class="field" type="password" name="password" >
+                        <label>Пароль</label>
+                        <div class="divforline divforlineBorder">
+                            <div class="leftdiv"></div>
+                            <div class="middledivPassword"></div>
+                            <div class="otherdiv"></div>
+                        </div>
+                    </div>
+                    <input class="btn btn-primary regbut" type="submit" value="Увiйти">
+                </form>
+                <span class="spanlink">Немає облікового запису? <a href="{% url 'register' %}">Зареєструватися тут.</a></span>
+
+            </div>
+        </div>
+    </div>
+
+
+<script>formControlCheck()</script>
+
+
+{% endblock %}
